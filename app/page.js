@@ -1,13 +1,25 @@
 "use client";
 import { useState } from "react";
-import Sidebar      from "@/components/Sidebar";
-import Header       from "@/components/Header";
-import DashboardView  from "@/components/views/DashboardView";
-import KaryawanView   from "@/components/views/KaryawanView";
-import AbsensiView    from "@/components/views/AbsensiView";
-import PenggajianView from "@/components/views/PenggajianView";
-import CutiView       from "@/components/views/CutiView";
-import PengaturanView from "@/components/views/PengaturanView";
+import dynamic from "next/dynamic";
+import Sidebar from "@/components/Sidebar";
+import Header  from "@/components/Header";
+
+const ViewLoader = () => (
+  <div style={{ display:"flex", flex:1, alignItems:"center", justifyContent:"center", background:"#f1f5f9" }}>
+    <div style={{ textAlign:"center" }}>
+      <div style={{ width:"32px", height:"32px", border:"2px solid rgba(99,102,241,0.15)", borderTop:"2px solid #6366f1", borderRadius:"50%", animation:"spin 0.7s linear infinite", margin:"0 auto 10px" }}/>
+      <div style={{ color:"rgba(99,102,241,0.4)", fontSize:"11px", letterSpacing:"0.1em" }}>MEMUAT</div>
+      <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+    </div>
+  </div>
+);
+
+const DashboardView  = dynamic(()=>import("@/components/views/DashboardView"),  { loading:()=><ViewLoader/>, ssr:false });
+const KaryawanView   = dynamic(()=>import("@/components/views/KaryawanView"),   { loading:()=><ViewLoader/>, ssr:false });
+const AbsensiView    = dynamic(()=>import("@/components/views/AbsensiView"),    { loading:()=><ViewLoader/>, ssr:false });
+const PenggajianView = dynamic(()=>import("@/components/views/PenggajianView"), { loading:()=><ViewLoader/>, ssr:false });
+const CutiView       = dynamic(()=>import("@/components/views/CutiView"),       { loading:()=><ViewLoader/>, ssr:false });
+const PengaturanView = dynamic(()=>import("@/components/views/PengaturanView"), { loading:()=><ViewLoader/>, ssr:false });
 
 export default function Home() {
   const [active, setActive] = useState("dashboard");
