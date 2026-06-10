@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import Header  from "@/components/Header";
 
 const ViewLoader = () => (
-  <div style={{ display:"flex", flex:1, alignItems:"center", justifyContent:"center", background:"#f1f5f9" }}>
+  <div style={{ display:"flex", height:"calc(100vh - 128px)", alignItems:"center", justifyContent:"center" }}>
     <div style={{ textAlign:"center" }}>
       <div style={{ width:"32px", height:"32px", border:"2px solid rgba(99,102,241,0.15)", borderTop:"2px solid #6366f1", borderRadius:"50%", animation:"spin 0.7s linear infinite", margin:"0 auto 10px" }}/>
       <div style={{ color:"rgba(99,102,241,0.4)", fontSize:"11px", letterSpacing:"0.1em" }}>MEMUAT</div>
